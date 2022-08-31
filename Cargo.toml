@@ -11,6 +11,13 @@ repository = "https://github.com/talesluna/rust-printers"
 description = "A lib to get printers and print files or bytes on unix and windows"
 readme = "README.md"
 
+[dependencies]
+rand = "0.8.5"
+
+[dependencies.reqwest]
+version = "0.11.11"
+features = ["blocking", "json"]
+
 [dependencies.uuid]
 version = "1.1.2"
 features = [ "v4", "v5" ]

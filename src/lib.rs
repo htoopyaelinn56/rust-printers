@@ -22,6 +22,8 @@
 mod unix;
 mod windows;
 mod process;
+mod cups;
+mod ipp;
 
 /// Printer and Job control
 pub mod printer;
@@ -51,7 +53,10 @@ pub fn get_printers() -> Vec<printer::Printer> {
     }
 
     if cfg!(unix) {
-        return unix::get_printers();
+        let printers = cups::get_printers();
+        // println!("{:?}", printers);
+        // return unix::get_printers();
+        return printers;
     }
 
     panic!("Unsupported OS");
@@ -85,3 +90,4 @@ pub fn get_printer_by_name(name: &str) -> Option<printer::Printer> {
 
     return opt.cloned();
 }
+
